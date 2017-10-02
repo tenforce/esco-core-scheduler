@@ -1,0 +1,3 @@
+<configuration debug="true">
+  <include file="${CONFIG_DIR_SCHEDULER:-/config}/logback.xml"/>
+</configuration>
