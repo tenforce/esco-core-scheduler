@@ -1,8 +1,5 @@
 package com.tenforce.mu_semtech.mu_java_scheduler.jobs;
 
-
-import com.tenforce.mu_semtech.db_support.DbSupport;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 
 import java.io.OutputStream;
@@ -12,9 +9,6 @@ import java.net.URL;
 public class Job implements Runnable {
 
   private static final org.slf4j.Logger log = LoggerFactory.getLogger(Job.class);
-  private static String localBaseUrl= new DbSupport().getCurrentEnvironmentProperty("local.server.url");
-
-
 
 //    "*/5 * * * * ?" // Every 30 seconds FOR TESTING
 //    "1 0 0 * * ?" // Daily at one past midnight
@@ -67,7 +61,7 @@ public class Job implements Runnable {
     @Override
     public void run() {
         final String charset = "UTF-8";
-        String baseUrl = (StringUtils.isBlank(localBaseUrl) ? System.getenv("BASE_URL") : localBaseUrl);
+        String baseUrl = System.getenv("BASE_URL");
         String actualUrl = (url.startsWith("/") ? baseUrl : "") + url;
         HttpURLConnection connection =null;
         try {
