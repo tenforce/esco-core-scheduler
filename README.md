@@ -1,4 +1,4 @@
-Esco Java-Scheduler
+Java-Scheduler
 ===
 
 A microservice that schedules calls to the other microservices.
@@ -45,7 +45,7 @@ Building
 --------
 
 ```
-docker build -t esco-core-scheduler .
+docker build -t java-scheduler .
 ```
 
 Running
@@ -55,7 +55,7 @@ Running
 docker run -it --rm --name scheduler \
     -v "$PWD"/example:/config \
     -e BASE_URL="http://application" \
-    esco-core-scheduler
+    java-scheduler
 ```
 
 Suggested improvements
