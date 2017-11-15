@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,7 +12,7 @@
 
 
   <name>mu-java-scheduler</name>
-  <description>A microservice that schedules calls to the other microservices every midnight.</description>
+  <description>A microservice that schedules calls to other microservices.</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -39,20 +37,22 @@
 
 
   <properties>
+    <commons-lang3.version>3.1</commons-lang3.version>
     <fasterxml.jackson.version>2.6.3</fasterxml.jackson.version>
     <guava.version>19.0</guava.version>
     <inject.version>1</inject.version>
-    <openrdf.sesame.version>4.1.0</openrdf.sesame.version>
     <springframework.version>4.2.4.RELEASE</springframework.version>
-    <virtuoso.jdbc-driver.version>4.1</virtuoso.jdbc-driver.version>
-    <virtuoso.sesame-provider.version>4.0</virtuoso.sesame-provider.version>
     <slf4j.version>1.7.7</slf4j.version>
     <logback.version>1.1.2</logback.version>
     <quartz-scheduler.version>2.2.1</quartz-scheduler.version>
-    <db-support.version>0.3-SNAPSHOT</db-support.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -74,10 +74,7 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.openrdf.sesame</groupId>
-      <artifactId>sesame-runtime</artifactId>
-    </dependency>
+
 
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -113,16 +110,16 @@
     </dependency>
 
 
-    <!-- DB-support -->
-    <dependency>
-      <groupId>mu-semtech</groupId>
-      <artifactId>db-support</artifactId>
-    </dependency>
-
   </dependencies>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
@@ -157,23 +154,6 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
         <version>${springframework.version}</version>
-      </dependency>
-
-
-      <dependency>
-        <groupId>org.openrdf.sesame</groupId>
-        <artifactId>sesame-runtime</artifactId>
-        <version>${openrdf.sesame.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>virtuoso</groupId>
-        <artifactId>jdbc-driver</artifactId>
-        <version>${virtuoso.jdbc-driver.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>virtuoso</groupId>
-        <artifactId>sesame-provider</artifactId>
-        <version>${virtuoso.sesame-provider.version}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -216,14 +196,6 @@
         <version>${quartz-scheduler.version}</version>
       </dependency>
 
-
-
-      <!-- DB-support -->
-      <dependency>
-        <groupId>mu-semtech</groupId>
-        <artifactId>db-support</artifactId>
-        <version>${db-support.version}</version>
-      </dependency>
     </dependencies>
 
   </dependencyManagement>
