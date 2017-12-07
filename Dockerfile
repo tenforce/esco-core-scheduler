@@ -5,8 +5,6 @@ ARG VERSION=1.0
 
 ENV LOG_LEVEL_EU_ESCO="info" LOG_LEVEL_COM_TENFORCE="info" LOG_LEVEL_ROOT="info"
 
-ADD settings.xml /root/.m2/settings.xml
-
 ADD . /app
 
 RUN cd /app && mvn install
